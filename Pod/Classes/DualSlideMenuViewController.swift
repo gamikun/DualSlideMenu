@@ -19,7 +19,7 @@ public protocol DualSlideMenuViewControllerDelegate {
     @objc optional func onSwipe()
     @objc optional func didChangeView()
 }
-public class DualSlideMenuViewController: UIViewController {
+open class DualSlideMenuViewController: UIViewController {
     
     //Create variables that will be used
     public var mainView: UIViewController!
@@ -121,10 +121,10 @@ public class DualSlideMenuViewController: UIViewController {
     func handleSwipes(_ sender:UISwipeGestureRecognizer) {
         // determines swipe direction from input and acts accordingly
         if (sender.direction == .left) {
-            toggle(swipeDirection: "left")
+            toggle("left")
         }
         else if (sender.direction == .right){
-            toggle(swipeDirection: "right")
+            toggle("right")
         }
         delegate?.onSwipe!()
     }
@@ -135,7 +135,7 @@ public class DualSlideMenuViewController: UIViewController {
      - parameter swipeDirection: the direction of the swipe
      ex. "left" or "right" where swiping from left to right is a "right" swipe
      */
-    public func toggle(swipeDirection: String) {
+    public func toggle(_ swipeDirection: String) {
         // acts depending on the current state of the app
         switch currentState{
         case .Main :
@@ -292,3 +292,4 @@ public class DualSlideMenuViewController: UIViewController {
         }, completion: nil)
     }
 }
+
